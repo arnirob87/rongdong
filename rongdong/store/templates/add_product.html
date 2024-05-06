@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% if user.is_authenticated %}
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">Add Product</h1>
+                <p class="lead fw-normal text-white-50 mb-0">Update User Profile...</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Post</button>
+                </form>
+                <br/><br/>
+                <!-- Add any additional content or styling as needed -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        var name = "{{ user.id }}";
+        document.getElementById ("nirob").value=name;
+    </script>
+    {% else %}
+    <center><h1>You're not allowed here!(and you know it..</h1></center>
+     {% endif %}
+     <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    {% endblock %}

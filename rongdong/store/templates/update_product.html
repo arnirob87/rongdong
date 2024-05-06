@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">Update Product</h1>
+                <p class="lead fw-normal text-white-50 mb-0">Update User Profile...</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        {% if user.is_authenticated and user.id == product.author.id %}
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Update</button> 
+                </form>
+                <br/><br/>
+                <!-- Add any additional content or styling as needed -->
+            </div>
+        </div>
+        {% else %}
+        <br/>   <br/>   <br/>   <br/>   <br/>   <br/>   <br/>   <br/>
+      <center><h1>You aren't allowed in this page.</h1> </center> 
+        <br/>   <br/>   <br/>   <br/>   <br/>   <br/>   <br/>
+        {% endif %}
+    </div>
+ 
+{% endblock %}
